@@ -1,0 +1,28 @@
+{
+"permission": {
+    "allow": [
+      "Read",
+      "Write",
+      "Bash(npm *)",
+      "Bash(git *)",
+      "Bash(node *)"
+
+    ],
+    "deny": [
+      "Bash(rm -rf *)"
+    ]
+      
+  },
+  "theme": "dark",
+  "model": "haiku",
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
+    "ANTHROPIC_AUTH_TOKEN": "sk-0f3bb446deb6402fb427dd38934cb9f0",
+    "ANTHROPIC_MODEL": "deepseek-v4-pro[1m]",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro[1m]",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v4-pro[1m]",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v4-flash",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "deepseek-v4-flash",
+    "CLAUDE_CODE_EFFORT_LEVEL": "max"
+  }
+}

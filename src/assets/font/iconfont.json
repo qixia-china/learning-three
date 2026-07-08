@@ -1,0 +1,37 @@
+{
+  "id": "5198997",
+  "name": "知识库",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "42905928",
+      "name": "可达鸭",
+      "font_class": "kedaya",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "46812346",
+      "name": "美食_冰淇淋",
+      "font_class": "bingqilin",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "46812347",
+      "name": "美食_蛋糕",
+      "font_class": "dangao",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "46812355",
+      "name": "美食_生鲜",
+      "font_class": "shengxian",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    }
+  ]
+}
