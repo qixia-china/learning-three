@@ -1,6 +1,6 @@
 <template>
   <div class="html_root">
-    <div class="items" v-for="item in list" :key="item.title">
+    <div class="items" v-for="item in list1" :key="item.title">
       <div class="title">{{ item.title }}</div>
       <div class="content">{{ item.content }}</div>
     </div>
@@ -12,7 +12,7 @@ export default {
   name: 'HtmlPage',
   data() {
     return {
-      list: htmlPageConfig.list,
+      list1: htmlPageConfig.list,
     }
   },
 }
