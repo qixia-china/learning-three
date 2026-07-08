@@ -60,7 +60,7 @@ const isCollapse = computed(() => {
   return counter.isCollapse
 })
 // 提供一个获取图标组件的方法，并做容错处理
-const getIconComponent = (iconName) => {
+const getIconComponent = (iconName: string) => {
   // 如果后端传的名字在 Element Plus 图标库中存在，就返回；否则返回一个默认图标
   return ElementPlusIconsVue[iconName] || ElementPlusIconsVue.Warning
 }

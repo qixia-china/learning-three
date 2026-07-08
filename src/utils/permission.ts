@@ -49,7 +49,7 @@ export function fetchUserMenus() {
           parentLocal: "knowledgeBase",
           parentComponents: 'knowledgeBase',
           component: 'HtmlPage',
-          meta: { title: '前端HTML', level: 2, lastTitle: "基础知识", lastIcon: "InfoFilled", },
+          meta: { title: '前端HTML', level: 2, icon: '', lastTitle: "基础知识", lastIcon: "InfoFilled", },
         },
         {
           path: '/css',
@@ -65,7 +65,7 @@ export function fetchUserMenus() {
           parentLocal: "knowledgeBase",
           parentComponents: 'knowledgeBase',
           component: 'JavaScriptPage',
-          meta: { title: '前端JavaScript', level: 2, lastTitle: "基础知识", lastIcon: "InfoFilled", },
+          meta: { title: '前端JavaScript', level: 2, icon: '', lastTitle: "基础知识", lastIcon: "InfoFilled", },
         },
         {
           path: '/vue',
@@ -73,7 +73,7 @@ export function fetchUserMenus() {
           component: 'VuePage',
           parentLocal: "knowledgeBase",
           parentComponents: 'knowledgeBase',
-          meta: { title: '前端Vue', level: 2, lastTitle: "基础知识", lastIcon: "InfoFilled", },
+          meta: { title: '前端Vue', level: 2, icon: '', lastTitle: "基础知识", lastIcon: "InfoFilled", },
         },
         {
           path: '/react',
@@ -81,7 +81,7 @@ export function fetchUserMenus() {
           component: 'ReactPage',
           parentLocal: "knowledgeBase",
           parentComponents: 'knowledgeBase',
-          meta: { title: '前端React', level: 2, lastTitle: "基础知识", lastIcon: "InfoFilled", },
+          meta: { title: '前端React', level: 2, icon: '', lastTitle: "基础知识", lastIcon: "InfoFilled", },
         },
         {
           path: '/nodejs',
@@ -89,7 +89,7 @@ export function fetchUserMenus() {
           component: 'NodeJsPage',
           parentLocal: "knowledgeBase",
           parentComponents: 'knowledgeBase',
-          meta: { title: '前端Node.js', level: 2, lastTitle: "基础知识", lastIcon: "InfoFilled", },
+          meta: { title: '前端Node.js', level: 2, icon: '', lastTitle: "基础知识", lastIcon: "InfoFilled", },
         },
         {
           path: '/mongodb',
@@ -97,7 +97,7 @@ export function fetchUserMenus() {
           component: 'MongoDBPage',
           parentLocal: "knowledgeBase",
           parentComponents: 'knowledgeBase',
-          meta: { title: '前端MongoDB', level: 2, lastTitle: "基础知识", lastIcon: "InfoFilled", },
+          meta: { title: '前端MongoDB', level: 2, icon: '', lastTitle: "基础知识", lastIcon: "InfoFilled", },
         },
         {
           path: '/imageVIrtualScrolling',
@@ -105,7 +105,7 @@ export function fetchUserMenus() {
           parentLocal: "VirtualScrolling",
           component: 'imageVIrtualScrolling',
           parentComponents: 'VirtualScrolling',
-          meta: { title: '图片虚拟滚动', level: 2, lastTitle: "虚拟滚动", lastIcon: "PictureFilled", },
+          meta: { title: '图片虚拟滚动', level: 2, icon: '', lastTitle: "虚拟滚动", lastIcon: "PictureFilled", },
 
         },
         {
@@ -114,7 +114,7 @@ export function fetchUserMenus() {
           parentLocal: "VirtualScrolling",
           component: 'tableScrolling',
           parentComponents: 'VirtualScrolling',
-          meta: { title: '表格虚拟滚动', level: 2, lastTitle: "虚拟滚动", lastIcon: "PictureFilled", },
+          meta: { title: '表格虚拟滚动', level: 2, icon: '', lastTitle: "虚拟滚动", lastIcon: "PictureFilled", },
         },
 
         {
@@ -124,7 +124,7 @@ export function fetchUserMenus() {
           parentLocal: "ThreeD",
           parentComponents: "ThreeD",
           meta: {
-            title: 'three.js学习', level: 2, lastTitle: "three.js学习", lastIcon: "Platform",
+            title: 'three.js学习', level: 2, icon: '', lastTitle: "three.js学习", lastIcon: "Platform",
           }
         },
 
@@ -135,7 +135,7 @@ export function fetchUserMenus() {
           parentLocal: "ThreeD",
           parentComponents: "ThreeD",
           meta: {
-            title: '士兵', level: 2, lastTitle: "three.js学习", lastIcon: "Platform",
+            title: '士兵', level: 2, icon: '', lastTitle: "three.js学习", lastIcon: "Platform",
           }
         },
         {
@@ -145,7 +145,7 @@ export function fetchUserMenus() {
           parentLocal: "ThreeD",
           parentComponents: "ThreeD",
           meta: {
-            title: 'scene', level: 2, lastTitle: "three.js学习", lastIcon: "Platform",
+            title: 'scene', level: 2, icon: '', lastTitle: "three.js学习", lastIcon: "Platform",
           }
         },
         {
@@ -155,7 +155,7 @@ export function fetchUserMenus() {
           parentLocal: "ThreeD",
           parentComponents: "ThreeD",
           meta: {
-            title: '玻璃材质', level: 2, lastTitle: "three.js学习", lastIcon: "Platform",
+            title: '玻璃材质', level: 2, icon: '', lastTitle: "three.js学习", lastIcon: "Platform",
           }
         },
       ],
@@ -174,7 +174,7 @@ interface Children {
     level: number;
     lastTitle: string;
     icon: string;
-    lastIcon?: string; // 建议明确类型
+    lastIcon?: string | undefined; // 建议明确类型
   };
 }
 

@@ -46,17 +46,11 @@
       </select>
       <button class="filter-btn" @click="scrollToRandom">🎲 随机跳转</button>
       <button class="filter-btn" @click="scrollToTop">⬆ 回到顶部</button>
-      <span class="filter-info">
-        符合条件: {{ formatNumber(filteredCount) }} 条
-      </span>
+      <span class="filter-info"> 符合条件: {{ formatNumber(filteredCount) }} 条 </span>
     </div>
 
     <!-- ========== 虚拟滚动表格 ========== -->
-    <div
-      ref="containerRef"
-      class="table-container"
-      @scroll="handleScroll"
-    >
+    <div ref="containerRef" class="table-container" @scroll="handleScroll">
       <!-- 固定表头 -->
       <div class="table-header" ref="headerRef">
         <div
@@ -75,14 +69,8 @@
       </div>
 
       <!-- 滚动体 -->
-      <div
-        class="table-body"
-        :style="{ height: totalHeight + 'px' }"
-      >
-        <div
-          class="visible-area"
-          :style="{ transform: `translateY(${offsetY}px)` }"
-        >
+      <div class="table-body" :style="{ height: totalHeight + 'px' }">
+        <div class="visible-area" :style="{ transform: `translateY(${offsetY}px)` }">
           <div
             v-for="row in visibleRows"
             :key="row.id"
@@ -121,8 +109,7 @@
     <!-- 页脚 -->
     <div class="footer-bar">
       <span>
-        虚拟滚动表格 · 模拟日均 {{ formatNumber(TOTAL) }} 条数据处理
-        · 当日已运行 {{ elapsedTime }}
+        虚拟滚动表格 · 模拟日均 {{ formatNumber(TOTAL) }} 条数据处理 · 当日已运行 {{ elapsedTime }}
       </span>
     </div>
   </div>
@@ -209,14 +196,14 @@ function generateRow(id: number): TableRow {
   const timestamp = `2026-07-01 ${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}.${String(ms).padStart(3, '0')}`
 
   const userId = `USR${String(Math.floor(r(5) * 9999999)).padStart(7, '0')}`
-  const action = ACTIONS[Math.floor(r(6) * ACTIONS.length)]
+  const action = ACTIONS[Math.floor(r(6) * ACTIONS.length)] || ''
   const statusIdx = Math.floor(r(7) * 100)
   const status: TableRow['status'] =
     statusIdx < 85 ? 'success' : statusIdx < 95 ? 'pending' : 'failed'
   const dataSize = Math.floor(r(8) * 5000) + 1
   const duration = Math.floor(r(9) * 500) + 1
   const ip = `10.${Math.floor(r(10) * 255)}.${Math.floor(r(11) * 255)}.${Math.floor(r(12) * 255)}`
-  const note = NOTES[Math.floor(r(13) * NOTES.length)]
+  const note = NOTES[Math.floor(r(13) * NOTES.length)] || ''
 
   return { id, index: id, timestamp, userId, action, status, dataSize, duration, ip, note }
 }
@@ -299,8 +286,7 @@ const startIndex = computed(() => {
 })
 
 const endIndex = computed(() => {
-  const idx =
-    Math.ceil((scrollTop.value + containerHeight.value) / ROW_HEIGHT) + BUFFER_ROWS
+  const idx = Math.ceil((scrollTop.value + containerHeight.value) / ROW_HEIGHT) + BUFFER_ROWS
   return Math.min(TOTAL, idx)
 })
 
