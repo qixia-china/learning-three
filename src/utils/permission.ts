@@ -117,47 +117,47 @@ export function fetchUserMenus() {
           meta: { title: '表格虚拟滚动', level: 2, lastTitle: "虚拟滚动", lastIcon: "PictureFilled", },
         },
 
-        {
-          path: "/threeLearning",
-          name: "threeLearning",
-          component: "threeLearning",
-          parentLocal: "ThreeD",
-          parentComponents: "ThreeD",
-          meta: {
-            title: 'three.js学习', level: 2, lastTitle: "three.js学习", lastIcon: "Platform",
-          }
-        },
+        // {
+        //   path: "/threeLearning",
+        //   name: "threeLearning",
+        //   component: "threeLearning",
+        //   parentLocal: "ThreeD",
+        //   parentComponents: "ThreeD",
+        //   meta: {
+        //     title: 'three.js学习', level: 2, lastTitle: "three.js学习", lastIcon: "Platform",
+        //   }
+        // },
 
-        {
-          path: "/baseic3D",
-          name: "baseic3D",
-          component: "baseic3D",
-          parentLocal: "ThreeD",
-          parentComponents: "ThreeD",
-          meta: {
-            title: '士兵', level: 2, lastTitle: "three.js学习", lastIcon: "Platform",
-          }
-        },
-        {
-          path: "/sceneLearning",
-          name: "sceneLearning",
-          component: "sceneLearning",
-          parentLocal: "ThreeD",
-          parentComponents: "ThreeD",
-          meta: {
-            title: 'scene', level: 2, lastTitle: "three.js学习", lastIcon: "Platform",
-          }
-        },
-        {
-          path: "/material-glass",
-          name: "materialGlass",
-          component: "materialGlass",
-          parentLocal: "ThreeD",
-          parentComponents: "ThreeD",
-          meta: {
-            title: '玻璃材质', level: 2, lastTitle: "three.js学习", lastIcon: "Platform",
-          }
-        },
+        // {
+        //   path: "/baseic3D",
+        //   name: "baseic3D",
+        //   component: "baseic3D",
+        //   parentLocal: "ThreeD",
+        //   parentComponents: "ThreeD",
+        //   meta: {
+        //     title: '士兵', level: 2, lastTitle: "three.js学习", lastIcon: "Platform",
+        //   }
+        // },
+        // {
+        //   path: "/sceneLearning",
+        //   name: "sceneLearning",
+        //   component: "sceneLearning",
+        //   parentLocal: "ThreeD",
+        //   parentComponents: "ThreeD",
+        //   meta: {
+        //     title: 'scene', level: 2, lastTitle: "three.js学习", lastIcon: "Platform",
+        //   }
+        // },
+        // {
+        //   path: "/material-glass",
+        //   name: "materialGlass",
+        //   component: "materialGlass",
+        //   parentLocal: "ThreeD",
+        //   parentComponents: "ThreeD",
+        //   meta: {
+        //     title: '玻璃材质', level: 2, lastTitle: "three.js学习", lastIcon: "Platform",
+        //   }
+        // },
       ],
     },
   ]

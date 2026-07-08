@@ -22,6 +22,7 @@
           <el-icon>
             <component :is="value.icon" />
           </el-icon>
+
           <span>{{ value.title }}</span>
         </template>
 
@@ -59,74 +60,23 @@ import { getLocalStorage } from '@/utils/storage'
 const isCollapse = computed(() => {
   return counter.isCollapse
 })
+
+const iconsList = {
+  Document,
+  HomeFilled,
+  InfoFilled,
+}
 // 提供一个获取图标组件的方法，并做容错处理
 const getIconComponent = (iconName: string) => {
   // 如果后端传的名字在 Element Plus 图标库中存在，就返回；否则返回一个默认图标
-  return ElementPlusIconsVue[iconName] || ElementPlusIconsVue.Warning
+  return iconsList[iconName as keyof typeof iconsList] || Document
 }
 const list = shallowRef()
 list.value = JSON.parse(getLocalStorage('menuList')).map((item: any) => {
   item.icon = getIconComponent(item.icon)
   return item
 })
-const list1 = ref([
-  {
-    title: '首页',
-    number: '1',
-    icon: markRaw(HomeFilled),
-    path: '/name',
-    children: [],
-  },
-  {
-    title: '基础知识',
-    number: '2',
-    icon: markRaw(InfoFilled),
-    children: [
-      {
-        title: '前端HTML',
-        number: '1-1',
-        icon: markRaw(Document),
-        path: '/html',
-      },
-      {
-        title: '前端CSS',
-        number: '1-2',
-        icon: markRaw(Document),
-        path: '/css',
-      },
-      {
-        title: '前端JavaScript',
-        number: '1-3',
-        icon: markRaw(Document),
-        path: '/javascript',
-      },
-      {
-        title: '前端Vue',
-        number: '1-4',
-        icon: markRaw(Document),
-        path: '/vue',
-      },
-      {
-        title: '前端React',
-        number: '1-5',
-        icon: markRaw(Document),
-        path: '/react',
-      },
-      {
-        title: '前端Node.js',
-        number: '1-6',
-        icon: markRaw(Document),
-        path: '/nodejs',
-      },
-      {
-        title: '前端MongoDB',
-        number: '1-7',
-        icon: markRaw(Document),
-        path: '/mongodb',
-      },
-    ],
-  },
-])
+
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
