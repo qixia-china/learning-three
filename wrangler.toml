@@ -1,0 +1,3 @@
+name = "learning-three"
+compatibility_date = "2026-07-08" # 日期可以随意填一个最近的
+pages_build_output_dir = "./dist"
