@@ -21,11 +21,9 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
 import leftSider from './components/leftSider.vue'
-// @ts-ignore
 import topHeader from './components/topHeader.vue'
-// @ts-ignore
 import centerTitle from './components/centerTitle.vue'
 </script>
 
