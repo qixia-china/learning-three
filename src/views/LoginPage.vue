@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       user: {
-        name: '18438603552',
+        name: 'admin',
         password: '123456',
       },
     }
@@ -52,8 +52,8 @@ export default {
   methods: {
     login() {
       const user = this.user
-      const phone_reg = /^1[0-9]{10}$/
-      if (!phone_reg.test(user.name)) {
+      // const phone_reg = /^1[0-9]{10}$/
+      if (!user.name) {
         ElMessage({
           message: '请输入用户名称',
           type: 'warning',
