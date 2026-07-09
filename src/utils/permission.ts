@@ -186,6 +186,19 @@ export function fetchUserMenus(): MenuItem[] {
           },
         },
         {
+          path: '/three-js',
+          name: 'three-js',
+          component: 'ThreeJsPage',
+          parentLocal: 'knowledgeBase',
+          parentComponents: 'knowledgeBase',
+          meta: {
+            title: 'Three.js',
+            level: 2,
+            lastTitle: '基础知识',
+            lastIcon: 'InfoFilled',
+          }
+        },
+        {
           path: '/imageVIrtualScrolling',
           name: 'imageVIrtualScrolling',
           parentLocal: 'VirtualScrolling',
@@ -211,6 +224,7 @@ export function fetchUserMenus(): MenuItem[] {
             lastIcon: 'PictureFilled',
           },
         },
+
       ],
     },
   ]
