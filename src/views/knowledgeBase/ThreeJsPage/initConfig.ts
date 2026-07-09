@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/Addons.js'
 import Goods from './Goods'
 import Boll from './boll'
+import BuGeometry from './buffermegotry'
 const cameraOptions = {
   position: { x: 16, y: 10, z: 18 },
   target: { x: 0, y: 2, z: 0 },
@@ -17,6 +18,7 @@ export default class TestThree {
   controls?: OrbitControls
   goods?: Goods
   bolls?: Boll
+  buGeometry?: BuGeometry
   constructor(id: string) {
     const el = document.getElementById(id)
     if (!el) return
@@ -27,6 +29,7 @@ export default class TestThree {
     this.initControls(); // 初始化控制器
     this.initGoods(); // 初始化物体
     this.initBoll(); // 初始化球
+    this.initBuGeometry(); // 自定义形状
     this.addEventListener(); // 添加监听
     this.animate(); // 渲染
 
@@ -92,7 +95,11 @@ export default class TestThree {
     this.scene.add(this.bolls)
     console.log("球", this.bolls)
   }
-
+  initBuGeometry() {
+    this.buGeometry = new BuGeometry()
+    this.scene.add(this.buGeometry)
+    console.log("球", this.buGeometry)
+  }
   animate() {
     const renderLoop = () => {
       if (this.controls) { this.controls.update() }

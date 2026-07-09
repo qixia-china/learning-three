@@ -76,6 +76,7 @@ export default class Boll extends THREE.Object3D {
   initPicking() {
     if (!this.app.renderer) return;
     const dom = this.app.renderer.domElement;
+    // pointerdown：兼容所有指针设备，并且还能获取到按下的压力（pressure）、接触面积等高级属性。
     dom.addEventListener("pointerdown", (event) => {
       const rect = dom.getBoundingClientRect();
       this.mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
