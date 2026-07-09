@@ -2,7 +2,6 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import { generateRoutes, fetchUserMenus, getMenuList } from '@/utils/permission'
 
 // 引入登录页和404页面
-// @ts-expect-error - LoginPage 无类型声明
 import Login from '@/views/LoginPage.vue'
 import NotFound from '@/views/NotFound.vue'
 
