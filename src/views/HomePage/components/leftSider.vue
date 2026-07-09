@@ -48,13 +48,12 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, markRaw, shallowRef } from 'vue'
+import { computed, shallowRef, type Component } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 import { useCounterStore } from '@/stores/counter'
 const counter = useCounterStore()
 import { Document, HomeFilled, InfoFilled } from '@element-plus/icons-vue'
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { getLocalStorage } from '@/utils/storage'
 // const isCollapse = ref(counter.isCollapse)
 const isCollapse = computed(() => {
@@ -71,11 +70,23 @@ const getIconComponent = (iconName: string) => {
   // 如果后端传的名字在 Element Plus 图标库中存在，就返回；否则返回一个默认图标
   return iconsList[iconName as keyof typeof iconsList] || Document
 }
-const list = shallowRef()
-list.value = JSON.parse(getLocalStorage('menuList')).map((item: any) => {
-  item.icon = getIconComponent(item.icon)
-  return item
-})
+interface MenuItem {
+  icon?: string | Component
+  path: string
+  title: string
+  number: string
+  children: MenuItem[]
+}
+
+const list = shallowRef<MenuItem[]>([])
+const storedMenu = getLocalStorage<MenuItem[]>('menuList')
+if (storedMenu) {
+  list.value = storedMenu.map((item) => {
+    const iconName = typeof item.icon === 'string' ? item.icon : ''
+    item.icon = getIconComponent(iconName)
+    return item
+  })
+}
 
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)

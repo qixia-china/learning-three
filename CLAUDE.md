@@ -20,14 +20,17 @@ npm run type-check   # 仅类型检查 (vue-tsc)
 
 ## 技术栈
 
-- **Vue 3** (Composition API + Options API 混用，正在过渡中)
-- **Vue Router 5** — 动态路由 + 权限守卫
-- **Pinia 3** — 状态管理
-- **Element Plus 2** — UI 组件库
-- **Sass (sass-embedded)** — SCSS 样式
-- **Vitest + jsdom** — 单元测试环境
-- **ESLint + oxlint** — 双 linter
-- **Node ≥22.18**
+- **Vue 3** (^3.5，Composition API + Options API 混用，正在过渡中)
+- **Vue Router 5** (^5.1) — 动态路由 + 权限守卫
+- **Pinia 3** (^3.0) — 状态管理
+- **Element Plus 2** (^2.14) — UI 组件库
+- **Three.js** (^0.185) + **dat.gui** (^0.7) — 3D 渲染与调试面板
+- **Sass (sass-embedded ^1.100)** — SCSS 样式
+- **Vitest 4** (^4.1) + **jsdom 29** — 单元测试环境
+- **TypeScript ~6.0** — 类型系统
+- **Vite 8** (^8.0) — 构建工具
+- **ESLint 10 + oxlint 1.69** — 双 linter
+- **Node** `^22.18.0 || >=24.12.0`
 
 ## 架构要点
 
@@ -47,7 +50,9 @@ npm run type-check   # 仅类型检查 (vue-tsc)
   - 左侧：[leftSider.vue](src/views/HomePage/components/leftSider.vue) — Element Plus `el-menu`，菜单项硬编码在前端
   - 右侧顶部：[topHeader.vue](src/views/HomePage/components/topHeader.vue) — 折叠按钮
   - 右侧内容：`<router-view>` 嵌套路由出口
-- **知识页面**：[src/views/](src/views/) 下的 `HtmlPage.vue`、`CssPage.vue`、`JavaScriptPage.vue` 等，作为 `/home` 的子路由
+- **知识页面**：[src/views/knowledgeBase/](src/views/knowledgeBase/) 下的 `HtmlPage.vue`、`CssPage.vue`、`JavaScriptPage.vue`、`VuePage.vue`、`ReactPage.vue`、`NodeJsPage.vue`、`MongoDBPage.vue`、`NamePage.vue`，作为 `/home` 的子路由
+- **虚拟滚动**：[src/views/VirtualScrolling/](src/views/VirtualScrolling/) 下的 `imageVIrtualScrolling.vue`、`tableScrolling.vue`
+- **404 页面**：[src/views/NotFound.vue](src/views/NotFound.vue)
 
 ### 状态管理 ([src/stores/counter.ts](src/stores/counter.ts))
 
