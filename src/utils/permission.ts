@@ -224,6 +224,19 @@ export function fetchUserMenus(): MenuItem[] {
             lastIcon: 'PictureFilled',
           },
         },
+        {
+          path: "/tableTestScrolling",
+          name: "tableTestScrolling",
+          parentLocal: "VirtualScrolling",
+          component: "tableTestScrolling",
+          parentComponents: "VirtualScrolling",
+          meta: {
+            title: "虚拟列表",
+            level: 2,
+            lastTitle: "虚拟滚动",
+            lastIcon: "PictureFilled",
+          }
+        }
 
       ],
     },

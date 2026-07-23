@@ -3,12 +3,15 @@
 <template>
   <svg style="position: absolute; width: 0; height: 0" aria-hidden="true">
     <filter id="color-weakness-filter" color-interpolation-filters="sRGB">
-      <feColorMatrix type="matrix" values="
+      <feColorMatrix
+        type="matrix"
+        values="
         0.625 0.375 0     0 0
         0.7   0.3   0     0 0
         0     0.3   0.7   0 0
         0     0     0     1 0
-      " />
+      "
+      />
     </filter>
   </svg>
   <div class="app">
@@ -18,6 +21,7 @@
 
 <style>
 @import '@/assets/font/iconfont.css';
+@import '@/assets/theme_table.scss';
 
 * {
   margin: 0;
