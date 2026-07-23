@@ -1,5 +1,5 @@
 import { setLocalStorage } from '@/utils/storage'
-
+import NotFound from '@/views/NotFound.vue'
 // ========== 类型定义 ==========
 
 /** 路由元信息 */
@@ -57,7 +57,7 @@ export function generateRoutes(menus: MenuItem[]): GeneratedRoute[] {
       component: () =>
         import(`@/views/${menu.component}/index.vue`).catch((err) => {
           console.error(`[generateRoutes] 组件加载失败: @/views/${menu.component}/index.vue`, err)
-          return import('@/views/NotFound.vue')
+          return NotFound
         }),
       meta: { title: menu.meta.title },
       children: menu.children?.map((child) => {
@@ -70,7 +70,7 @@ export function generateRoutes(menus: MenuItem[]): GeneratedRoute[] {
                 `[generateRoutes] 子组件加载失败: @/views/${child.parentLocal}/${child.component}.vue`,
                 err,
               )
-              return import('@/views/NotFound.vue')
+              return NotFound
             }),
           meta: { title: child.meta.title },
         }
