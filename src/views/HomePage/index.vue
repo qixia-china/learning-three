@@ -40,11 +40,12 @@ import centerTitle from './components/centerTitle.vue'
 
 .right {
   height: 100%;
-  width: 100%;
+  width: calc(100% - 400px);
   background: var(--main-bg);
   display: flex;
   flex-direction: column;
-
+  flex-shrink: 1;
+  flex-grow: 1;
   .top {
     height: 48px;
   }
@@ -56,12 +57,13 @@ import centerTitle from './components/centerTitle.vue'
   .bottom {
     flex: 1;
     border: 1px solid var(--content-border-color);
-    overflow: auto;
     margin: 12px;
     background: var(--content-bg);
     border-radius: 8px;
     padding: 12px;
     box-sizing: border-box;
+    min-height: 0;
+    width: 100%;
   }
 }
 </style>

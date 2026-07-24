@@ -236,8 +236,16 @@ export function fetchUserMenus(): MenuItem[] {
             lastTitle: "虚拟滚动",
             lastIcon: "PictureFilled",
           }
-        }
-
+        },
+        // 手写代码
+        {
+          path: '/hand-write-code',
+          name: 'HandWriteCode',
+          parentLocal: 'HandWriteCode',
+          parentComponents: 'HandWriteCode',
+          component: 'index',
+          meta: { title: '手写代码', level: 1, icon: 'HomeFilled', lastTitle: '' },
+        },
       ],
     },
   ]

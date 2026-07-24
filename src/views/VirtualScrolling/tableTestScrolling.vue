@@ -1,46 +1,48 @@
 <template>
-  <div class="table_container" ref="containerRef" @scroll="handleScroll">
-    <!-- 固定表头 -->
-    <div class="table_header">
-      <div
-        class="th"
-        v-for="item in columns"
-        :key="item.key"
-        :data-key="item.key"
-        :style="{
-          height: HEADER_HEIGHT + 'px',
-          minWidth: item.width + 'px',
-          width: item.width + 'px',
-        }"
-      >
-        <span>{{ item.title }}</span>
+  <div class="table-scrolling-root">
+    <div class="table_container" ref="containerRef" @scroll="handleScroll">
+      <!-- 固定表头 -->
+      <div class="table_header">
+        <div
+          class="th"
+          v-for="item in columns"
+          :key="item.key"
+          :data-key="item.key"
+          :style="{
+            height: HEADER_HEIGHT + 'px',
+            minWidth: item.width + 'px',
+            width: item.width + 'px',
+          }"
+        >
+          <span>{{ item.title }}</span>
+        </div>
       </div>
-    </div>
-    <!-- 滚动体 -->
-    <div class="table_body" :style="{ height: totalHeight + 'px' }">
-      <div class="visible_area" :style="{ transform: `translateY(${offsetY}px)` }">
-        <div v-for="row in visibleRows" :key="row.id" class="tr">
-          <div
-            v-for="col in columns"
-            :key="col.key"
-            class="td"
-            ref="tableTdRef"
-            :data-key="col.key"
-            :style="{ width: col.width + 'px', minWidth: col.width + 'px' }"
-          >
-            <template v-if="col.key === 'status'">
-              <span :class="['status-badge', row.status]">
-                {{ row.status }}
-              </span>
-            </template>
-            <template v-else-if="col.key === 'action'">
-              <span :class="['action-tag', row.action]">
-                {{ row.action }}
-              </span>
-            </template>
-            <template v-else>
-              <span>{{ row[col.key] }}</span>
-            </template>
+      <!-- 滚动体 -->
+      <div class="table_body" :style="{ height: totalHeight + 'px' }">
+        <div class="visible_area" :style="{ transform: `translateY(${offsetY}px)` }">
+          <div v-for="row in visibleRows" :key="row.id" class="tr">
+            <div
+              v-for="col in columns"
+              :key="col.key"
+              class="td"
+              ref="tableTdRef"
+              :data-key="col.key"
+              :style="{ width: col.width + 'px', minWidth: col.width + 'px' }"
+            >
+              <template v-if="col.key === 'status'">
+                <span :class="['status-badge', row.status]">
+                  {{ row.status }}
+                </span>
+              </template>
+              <template v-else-if="col.key === 'action'">
+                <span :class="['action-tag', row.action]">
+                  {{ row.action }}
+                </span>
+              </template>
+              <template v-else>
+                <span>{{ row[col.key] }}</span>
+              </template>
+            </div>
           </div>
         </div>
       </div>
@@ -57,7 +59,7 @@ const instance = getCurrentInstance()
 const props = defineProps({
   defaultData: {
     type: Array,
-    default: () => ['note', 'ip'],
+    default: () => ['note', 'ip', 'action'],
   },
 })
 
@@ -78,24 +80,26 @@ interface ColumDef {
   key: string
   title: string
   width: number
+  minWidth: number
   sortable?: boolean
 }
 const columns = ref<ColumDef[]>([
-  { key: 'index', title: '序号', width: 100, sortable: false },
-  { key: 'timestamp', title: '时间戳', width: 170, sortable: true },
-  { key: 'userId', title: '用户ID', width: 160, sortable: true },
-  { key: 'action', title: '操作类型', width: 120, sortable: true },
-  { key: 'status', title: '状态', width: 100, sortable: true },
-  { key: 'dataSize', title: '数据量(KB)', width: 110, sortable: true },
-  { key: 'duration', title: '耗时(ms)', width: 100, sortable: true },
-  { key: 'ip', title: 'IP 地址', width: 150, sortable: true },
-  { key: 'note', title: '备注', width: 200, sortable: false },
+  { key: 'index', title: '序号', width: 100, minWidth: 100, sortable: false },
+  { key: 'timestamp', title: '时间戳', width: 170, minWidth: 170, sortable: true },
+  { key: 'userId', title: '用户ID', width: 160, minWidth: 160, sortable: true },
+  { key: 'action', title: '操作类型', width: 120, minWidth: 120, sortable: true },
+  { key: 'status', title: '状态', width: 100, minWidth: 100, sortable: true },
+  { key: 'dataSize', title: '数据量(KB)', width: 110, minWidth: 110, sortable: true },
+  { key: 'duration', title: '耗时(ms)', width: 100, minWidth: 100, sortable: true },
+  { key: 'ip', title: 'IP 地址', width: 150, minWidth: 150, sortable: true },
+  { key: 'note', title: '备注', width: 200, minWidth: 200, sortable: false },
 ])
 
 // ========数据行类型========
 interface TableRow {
   id: number
   index: number
+  userId: string
   timestamp: string
   action: string
   status: 'success' | 'pending' | 'failed'
@@ -138,12 +142,32 @@ const offsetY = computed(() => {
   console.log('平移', startIndex.value * ROW_HEIGHT)
   return startIndex.value * ROW_HEIGHT
 })
+
+const setWorkerData = function () {
+  // 1. 创建 Worker 实例，传入 worker.js 的路径
+  const myWorker = new Worker('/static/worker.js')
+
+  // 2. 向 Worker 发送数据
+  myWorker.postMessage([10, 20])
+
+  // 3. 监听 Worker 返回的消息
+  myWorker.onmessage = function (event) {
+    console.log('收到 Worker 的计算结果:', event.data) // 输出: 200
+  }
+
+  // 4. 错误处理
+  myWorker.onerror = function (error) {
+    console.error('Worker 发生错误:', error.message)
+  }
+}
+setWorkerData()
 const totalRows: TableRow[] = [
   ...Array.from({
     length: 30,
   }).map((_, i) => {
     const row = {
       id: i,
+      userId: 'u00' + i,
       index: i,
       timestamp: '2023-10-01 12:00:00' + i,
       action: '新增',
@@ -161,8 +185,9 @@ const totalRows: TableRow[] = [
     const row = {
       id: i,
       index: i,
+      userId: 'u00' + (i * 1 + 30),
       timestamp: '2023-10-01 12:00:00' + i,
-      action: '新增',
+      action: '新增新增新增新增新增新增新增新增新增新增新增',
       status: 'success' as const,
       dataSize: 100,
       duration: 100,
@@ -198,7 +223,7 @@ const calWidth = function () {
     // 将计算出的最大宽度更新到响应式的 columns 中
     const col = columns.value.find((c) => c.key === key)
     if (col) {
-      col.width = maxWidth + 20 // 加上 padding 余量
+      col.width = col.minWidth > maxWidth + 20 ? col.minWidth : maxWidth + 20 // 加上 padding 余量
     }
   })
 }
@@ -208,15 +233,21 @@ onMounted(async () => {
 })
 </script>
 <style scoped lang="scss">
-.table_container {
-  flex: 1;
+.table-scrolling-root {
   width: 100%;
+}
+.table_container {
+  // flex: 1;
+  /* 关键属性：让表格布局固定 */
+  table-layout: fixed;
+  max-width: 100%;
   overflow: auto;
   position: relative;
   height: 500px;
   border: 1px solid var(--content-border-color, #333);
   border-radius: 8px;
   background: var(--content-bg, #1a1a1a);
+
   .table_header {
     position: sticky;
     top: 0;
